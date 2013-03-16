@@ -20,3 +20,15 @@
 2013-03-16T18:43:12+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
 2013-03-16T18:47:23+00:00	NOTICE	rokcommon	Directory /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/lib does not exist.  Unable to add to Class Loader 
 2013-03-16T18:47:23+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
+2013-03-16T18:54:30+00:00	NOTICE	rokcommon	Directory /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/lib does not exist.  Unable to add to Class Loader 
+2013-03-16T18:54:30+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
+2013-03-16T18:57:49+00:00	NOTICE	rokcommon	Directory /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/lib does not exist.  Unable to add to Class Loader 
+2013-03-16T18:57:49+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
+2013-03-16T18:57:50+00:00	NOTICE	rokcommon	Directory /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/lib does not exist.  Unable to add to Class Loader 
+2013-03-16T18:57:50+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
+2013-03-16T19:03:45+00:00	NOTICE	rokcommon	Directory /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/lib does not exist.  Unable to add to Class Loader 
+2013-03-16T19:03:45+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
+2013-03-16T19:03:46+00:00	NOTICE	rokcommon	Directory /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/lib does not exist.  Unable to add to Class Loader 
+2013-03-16T19:03:46+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
+2013-03-16T19:09:59+00:00	NOTICE	rokcommon	Directory /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/lib does not exist.  Unable to add to Class Loader 
+2013-03-16T19:09:59+00:00	NOTICE	rokcommon	Unable to find registered container config file rokgallery at /Applications/MAMP/dev.local/pelanrumah/components/com_rokgallery/container.xml
