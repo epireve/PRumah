@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  mod_breadcrumbs
  * @since       1.5
  */
-class ModBreadCrumbsHelper
+class modBreadCrumbsHelper
 {
 	public static function getList(&$params)
 	{

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  mod_stats
  * @since       1.5
  */
-class ModStatsHelper
+class modStatsHelper
 {
 	public static function &getList(&$params)
 	{

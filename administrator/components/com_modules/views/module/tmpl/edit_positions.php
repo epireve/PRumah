@@ -13,7 +13,7 @@ require_once JPATH_ADMINISTRATOR . '/components/com_templates/helpers/templates.
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 $clientId       = $this->item->client_id;
-$state          = 1;
+$state          = $this->state->get('filter.state');
 $templates      = array_keys(ModulesHelper::getTemplates($clientId, $state));
 $templateGroups = array();
 

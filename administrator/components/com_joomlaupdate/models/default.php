@@ -483,6 +483,7 @@ ENDDATA;
 	 */
 	public function finaliseUpgrade()
 	{
+		jimport('joomla.installer.install');
 		$installer = JInstaller::getInstance();
 
 		$installer->setPath('source', JPATH_ROOT);

@@ -202,16 +202,15 @@ class JCacheController
 	/**
 	 * Store data to cache by id and group
 	 *
-	 * @param   mixed    $data        The data to store
-	 * @param   string   $id          The cache data id
-	 * @param   string   $group       The cache data group
-	 * @param   boolean  $wrkarounds  True to use wrkarounds
+	 * @param   mixed   $data   The data to store
+	 * @param   string  $id     The cache data id
+	 * @param   string  $group  The cache data group
 	 *
-	 * @return  boolean  True if cache stored
-	 * 
+	 * @return  boolean  True if cache was stored
+	 *
 	 * @since   11.1
 	 */
-	public function store($data, $id, $group = null, $wrkarounds = true)
+	public function store($data, $id, $group = null)
 	{
 		$locktest = new stdClass;
 		$locktest->locked = null;

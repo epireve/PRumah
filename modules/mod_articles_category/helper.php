@@ -21,7 +21,7 @@ JModelLegacy::addIncludePath($com_path . '/models', 'ContentModel');
  * @package     Joomla.Site
  * @subpackage  mod_articles_category
  */
-abstract class ModArticlesCategoryHelper
+abstract class modArticlesCategoryHelper
 {
 	public static function getList(&$params)
 	{

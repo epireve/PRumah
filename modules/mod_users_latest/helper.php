@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  * @package     Joomla.Site
  * @subpackage  mod_users_latest
  */
-class ModUsersLatestHelper
+class modUsersLatestHelper
 {
 	// get users sorted by activation date
 	public static function getUsers($params)

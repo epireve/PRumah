@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  System.p3p
  * @since       1.6
  */
-class PlgSystemP3p extends JPlugin
+class plgSystemP3p extends JPlugin
 {
 	/*
 	 * @since   1.6

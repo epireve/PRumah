@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Editors-xtd.image
  * @since       1.5
  */
-class PlgButtonImage extends JPlugin
+class plgButtonImage extends JPlugin
 {
 	/**
 	 * Constructor

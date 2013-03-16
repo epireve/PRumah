@@ -45,7 +45,7 @@ abstract class ContactHelperAssociation extends CategoryHelperAssociation
 		{
 			if ($id)
 			{
-				$associations = JLanguageAssociations::getAssociations('com_contact', '#__contact_details', 'com_contact.item', $id);
+				$associations = ContactHelper::getAssociations($id);
 
 				$return = array();
 

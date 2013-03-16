@@ -17,7 +17,7 @@ JModelLegacy::addIncludePath(JPATH_ADMINISTRATOR.'/components/com_content/models
  * @package     Joomla.Administrator
  * @subpackage  mod_latest
  */
-abstract class ModLatestHelper
+abstract class modLatestHelper
 {
 	/**
 	 * Get a list of articles.

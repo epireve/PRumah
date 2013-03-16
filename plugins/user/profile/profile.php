@@ -16,23 +16,15 @@ defined('JPATH_BASE') or die;
  * @subpackage  User.profile
  * @since       1.6
  */
-class PlgUserProfile extends JPlugin
+class plgUserProfile extends JPlugin
 {
-	/**
-	 * Date of birth.
-	 *
-	 * @var    string
-	 * @since  3.1
-	 */
-	private $_date = '';
-
 	/**
 	 * Constructor
 	 *
-	 * @param   object  $subject  The object to observe
-	 * @param   array   $config   An array that holds the plugin configuration
-	 *
-	 * @since   1.5
+	 * @access      protected
+	 * @param       object  $subject The object to observe
+	 * @param       array   $config  An array that holds the plugin configuration
+	 * @since       1.5
 	 */
 	public function __construct(& $subject, $config)
 	{
@@ -42,11 +34,11 @@ class PlgUserProfile extends JPlugin
 	}
 
 	/**
-	 * @param   string	 $context  The context for the data
-	 * @param   integer  $data     The user id
+	 * @param   string	$context	The context for the data
+	 * @param   integer  $data		The user id
+	 * @param   object
 	 *
 	 * @return  boolean
-	 *
 	 * @since   1.6
 	 */
 	public function onContentPrepareData($context, $data)
@@ -254,11 +246,6 @@ class PlgUserProfile extends JPlugin
 				{
 					$form->removeField($field, 'profile');
 				}
-
-				if ($this->params->get('register-require_dob', 1) > 0)
-				{
-					$form->setFieldAttribute('spacer', 'type', 'spacer', 'profile');
-				}
 			}
 			// Case profile in site or admin
 			elseif ($name == 'com_users.profile' || $name == 'com_admin.profile')
@@ -272,43 +259,6 @@ class PlgUserProfile extends JPlugin
 				{
 					$form->removeField($field, 'profile');
 				}
-
-				if ($this->params->get('profile-require_dob', 1) > 0)
-				{
-					$form->setFieldAttribute('spacer', 'type', 'spacer', 'profile');
-				}
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * Method is called before user data is stored in the database
-	 *
-	 * @param   array    $user   Holds the old user data.
-	 * @param   boolean  $isnew  True if a new user is stored.
-	 * @param   array    $data   Holds the new user data.
-	 *
-	 * @return 	boolean
-	 *
-	 * @since   3.1
-	 * @throws 	InvalidArgumentException on invalid date.
-	 */
-	public function onUserBeforeSave($user, $isnew, $data)
-	{
-		// Check that the date is valid.
-		if (!empty($data['profile']['dob']))
-		{
-			try
-			{
-				$date = new JDate($data['profile']['dob']);
-				$this->_date = $date->format('Y-m-d');
-			}
-			catch (Exception $e)
-			{
-				// Throw an exception if date is not valid.
-				throw new InvalidArgumentException(JText::_('PLG_USER_PROFILE_ERROR_INVALID_DOB'));
 			}
 		}
 
@@ -323,8 +273,12 @@ class PlgUserProfile extends JPlugin
 		{
 			try
 			{
-				// Sanitize the date
-				$data['profile']['dob'] = $this->_date;
+				//Sanitize the date
+				if (!empty($data['profile']['dob']))
+				{
+					$date = new JDate($data['profile']['dob']);
+					$data['profile']['dob'] = $date->format('Y-m-d');
+				}
 
 				$db = JFactory::getDbo();
 				$db->setQuery(
@@ -359,11 +313,9 @@ class PlgUserProfile extends JPlugin
 	 *
 	 * Method is called after user data is deleted from the database
 	 *
-	 * @param   array    $user     Holds the user data
-	 * @param   boolean  $success  True if user was succesfully stored in the database
-	 * @param   string   $msg      Message
-	 *
-	 * @return  boolean
+	 * @param   array  $user		Holds the user data
+	 * @param   boolean		$success	True if user was succesfully stored in the database
+	 * @param   string  $msg		Message
 	 */
 	public function onUserAfterDelete($user, $success, $msg)
 	{

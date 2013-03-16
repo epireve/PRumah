@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  * @subpackage  System.sef
  * @since       1.5
  */
-class PlgSystemSef extends JPlugin
+class plgSystemSef extends JPlugin
 {
 	/**
 	 * Add the canonical uri to the head
@@ -71,7 +71,7 @@ class PlgSystemSef extends JPlugin
 		$buffer = JResponse::getBody();
 
 		$regex  = '#href="index.php\?([^"]*)#m';
-		$buffer = preg_replace_callback($regex, array('PlgSystemSef', 'route'), $buffer);
+		$buffer = preg_replace_callback($regex, array('plgSystemSef', 'route'), $buffer);
 		$this->checkBuffer($buffer);
 
 		$protocols = '[a-zA-Z0-9]+:'; //To check for all unknown protocals (a protocol must contain at least one alpahnumeric fillowed by :

@@ -145,12 +145,6 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 		</div>
 	<?php endif; ?>
 
-	<?php if ($params->get('show_tags', 1) && !empty($this->item->tags)) : ?>
-		<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-
-		<?php echo $this->item->tagLayout->render($this->item->tags->itemTags); ?>
-	<?php endif; ?>
-
 	<?php if (!$params->get('show_intro')) : echo $this->item->event->afterDisplayTitle; endif; ?>
 	<?php echo $this->item->event->beforeDisplayContent; ?>
 
@@ -258,7 +252,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && $this->item->p
 	<?php if (isset($urls) && ((!empty($urls->urls_position) && ($urls->urls_position == '1')) || ($params->get('urls_position') == '1'))) : ?>
 	<?php echo $this->loadTemplate('links'); ?>
 	<?php endif; ?>
-	<?php // Optional teaser intro text for guests ?>
+	<?php //optional teaser intro text for guests ?>
 	<?php elseif ($params->get('show_noauth') == true && $user->get('guest')) : ?>
 	<?php echo $this->item->introtext; ?>
 	<?php //Optional link to let them register to see the whole article. ?>

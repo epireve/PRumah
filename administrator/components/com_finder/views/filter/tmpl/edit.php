@@ -19,9 +19,13 @@ JHtml::_('formbehavior.chosen', 'select');
 <form action="<?php echo JRoute::_('index.php?option=com_finder&view=filter&layout=edit&filter_id=' . (int) $this->item->filter_id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-horizontal">
 
 	<fieldset>
-		<?php echo JHtml::_('bootstrap.startPane', 'myTab', array('active' => 'basic')); ?>
-
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'basic', JText::_('COM_FINDER_EDIT_FILTER', true)); ?>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#basic" data-toggle="tab"><?php echo JText::_('COM_FINDER_EDIT_FILTER');?></a></li>
+			<li><a href="#params" data-toggle="tab"><?php echo JText::_('COM_FINDER_FILTER_FIELDSET_PARAMS');?></a></li>
+			<li><a href="#details" data-toggle="tab"><?php echo JText::_('COM_FINDER_FILTER_FIELDSET_DETAILS');?></a></li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="basic">
 				<div class="control-group">
 					<div class="control-label"><?php echo $this->form->getLabel('title'); ?></div>
 					<div class="controls"><?php echo $this->form->getInput('title'); ?></div>
@@ -38,9 +42,8 @@ JHtml::_('formbehavior.chosen', 'select');
 					<div class="control-label"><?php echo $this->form->getLabel('map_count'); ?></div>
 					<div class="controls"><?php echo $this->form->getInput('map_count'); ?></div>
 				</div>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'params', JText::_('COM_FINDER_FILTER_FIELDSET_PARAMS', true)); ?>
+			</div>
+			<div class="tab-pane active" id="params">
 				<?php foreach ($this->form->getGroup('params') as $field) : ?>
 					<div class="control-group">
 						<?php if (!$field->hidden) : ?>
@@ -49,9 +52,8 @@ JHtml::_('formbehavior.chosen', 'select');
 						<div class="controls"><?php echo $field->input; ?></div>
 					</div>
 				<?php endforeach; ?>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'details', JText::_('COM_FINDER_FILTER_FIELDSET_DETAILS', true)); ?>
+			</div>
+			<div class="tab-pane active" id="details">
 				<div class="control-group">
 					<div class="control-label"><?php echo $this->form->getLabel('created_by'); ?></div>
 					<div class="controls"><?php echo $this->form->getInput('created_by'); ?></div>
@@ -74,11 +76,9 @@ JHtml::_('formbehavior.chosen', 'select');
 						<div class="controls"><?php echo $this->form->getInput('modified'); ?></div>
 					</div>
 				<?php endif; ?>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-		<?php echo JHtml::_('bootstrap.endPane'); ?>
+			</div>
+		</div>
 	</fieldset>
-
 	<div id="finder-filter-window">
 		<?php echo JHtml::_('filter.slider', array('selected_nodes' => $this->filter->data)); ?>
 	</div>

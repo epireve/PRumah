@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Editors.tinymce
  * @since       1.5
  */
-class PlgEditorTinymce extends JPlugin
+class plgEditorTinymce extends JPlugin
 {
 	/**
 	 * Base path for editor files

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Authentication.joomla
  * @since       1.5
  */
-class PlgAuthenticationJoomla extends JPlugin
+class plgAuthenticationJoomla extends JPlugin
 {
 	/**
 	 * This method should handle any authentication and report back to the subject

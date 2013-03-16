@@ -16,7 +16,7 @@ defined('JPATH_BASE') or die;
  * @subpackage  System.redirect
  * @since       1.6
  */
-class PlgSystemRedirect extends JPlugin
+class plgSystemRedirect extends JPlugin
 {
 	/**
 	 * Object Constructor.
@@ -32,7 +32,7 @@ class PlgSystemRedirect extends JPlugin
 		parent::__construct($subject, $config);
 
 		// Set the error handler for E_ERROR to be the class handleError method.
-		JError::setErrorHandling(E_ERROR, 'callback', array('PlgSystemRedirect', 'handleError'));
+		JError::setErrorHandling(E_ERROR, 'callback', array('plgSystemRedirect', 'handleError'));
 	}
 
 	public static function handleError(&$error)

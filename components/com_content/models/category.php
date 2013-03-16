@@ -240,8 +240,7 @@ class ContentModelCategory extends JModelList
 					$this->setError($model->getError());
 				}
 			}
-			else
-			{
+			else {
 				$this->_articles = array();
 			}
 
@@ -362,7 +361,7 @@ class ContentModelCategory extends JModelList
 	}
 
 	/**
-	 * Get the parent category.
+	 * Get the parent categorie.
 	 *
 	 * @param   integer  An optional category id. If not supplied, the model state 'category.id' will be used.
 	 *

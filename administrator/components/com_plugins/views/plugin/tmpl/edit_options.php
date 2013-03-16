@@ -10,9 +10,8 @@
 defined('_JEXEC') or die;
 
 foreach ($this->fieldsets as $name => $fieldset) :
-	$label = !empty($fieldset->label) ? JText::_($fieldset->label, true) : JText::_('COM_PLUGINS_'.$fieldset->name.'_FIELDSET_LABEL', true);
-	$optionsname = 'options-' . $fieldset->name;
-	echo JHtml::_('bootstrap.addPanel', 'myTab', $optionsname,  $label);
+	echo '<div class="tab-pane" id="options-'.$name.'">';
+	$label = !empty($fieldset->label) ? $fieldset->label : 'COM_PLUGINS_'.$name.'_FIELDSET_LABEL';
 	if (isset($fieldset->description) && trim($fieldset->description)) :
 		echo '<p class="tip">'.$this->escape(JText::_($fieldset->description)).'</p>';
 	endif;
@@ -33,6 +32,5 @@ foreach ($this->fieldsets as $name => $fieldset) :
 	<?php endforeach; ?>
 	<?php echo $hidden_fields; ?>
 
-<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
+	<?php echo '</div>'; // .tab-pane div ?>
 <?php endforeach; ?>

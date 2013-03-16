@@ -65,9 +65,32 @@ endif;
 	<div class="row-fluid">
 		<!-- Begin Content -->
 		<div class="span10 form-horizontal">
-			<?php echo JHtml::_('bootstrap.startPane', 'myTab', array('active' => 'general')); ?>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#general" data-toggle="tab"><?php echo JText::_('COM_CONTENT_ARTICLE_DETAILS');?></a></li>
+				<li><a href="#publishing" data-toggle="tab"><?php echo JText::_('COM_CONTENT_FIELDSET_PUBLISHING');?></a></li>
+				<?php $fieldSets = $this->form->getFieldsets('attribs'); ?>
+					<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+					<?php if ($params['show_article_options'] || (( $params['show_article_options'] == '' && !empty($editoroptions) ))) : ?>
+						<?php if ($name != 'editorConfig' && $name != 'basic-limited') : ?>
+							<li><a href="#attrib-<?php echo $name;?>" data-toggle="tab"><?php echo JText::_($fieldSet->label);?></a></li>
+						<?php endif ?>
+					<?php endif; ?>
+				<?php endforeach; ?>
+				<?php if ( $this->canDo->get('core.admin')   ):  ?>
+					<li><a href="#editor" data-toggle="tab"><?php echo JText::_('COM_CONTENT_SLIDER_EDITOR_CONFIG');?></a></li>
+				<?php endif ?>
+				<li><a href="#metadata" data-toggle="tab"><?php echo JText::_('JGLOBAL_FIELDSET_METADATA_OPTIONS');?></a></li>
+				<?php if ($assoc) : ?>
+					<li><a href="#associations" data-toggle="tab"><?php echo JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS');?></a></li>
+				<?php endif; ?>
+				<?php if ($this->canDo->get('core.admin')) : ?>
+					<li><a href="#permissions" data-toggle="tab"><?php echo JText::_('COM_CONTENT_FIELDSET_RULES');?></a></li>
+				<?php endif ?>
+			</ul>
 
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'general', JText::_('COM_CONTENT_ARTICLE_DETAILS', true)); ?>
+			<div class="tab-content">
+				<!-- Begin Tabs -->
+				<div class="tab-pane active" id="general">
 					<fieldset class="adminform">
 						<div class="control-group form-inline">
 							<?php echo $this->form->getLabel('title'); ?> <?php echo $this->form->getInput('title'); ?> <?php echo $this->form->getLabel('catid'); ?> <?php echo $this->form->getInput('catid'); ?>
@@ -112,11 +135,11 @@ endif;
 							</div>
 						</div>
 					<?php endif; ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
+				</div>
 
 				<?php // Do not show the publishing options if the edit form is configured not to. ?>
 					<?php  if ($params['show_publishing_options'] || ( $params['show_publishing_options'] = '' && !empty($editoroptions)) ) : ?>
-						<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'publishing', JText::_('COM_CONTENT_FIELDSET_PUBLISHING', true)); ?>
+						<div class="tab-pane" id="publishing">
 							<div class="row-fluid">
 								<div class="span6">
 									<div class="control-group">
@@ -201,56 +224,46 @@ endif;
 									<?php endif; ?>
 								</div>
 							</div>
-						<?php echo JHtml::_('bootstrap.endPanel'); ?>
+						</div>
 					<?php  endif; ?>
-
-					<?php if ($params['show_article_options'] || (( $params['show_article_options'] == '' && !empty($editoroptions) ))) : ?>
-							<?php $fieldSets = $this->form->getFieldsets('attribs'); ?>
-							<?php foreach ($fieldSets as $name => $fieldSet) : ?>
-								<?php if ($name != 'editorConfig' && $name != 'basic-limited') : ?>
-									<?php $attribtabs = 'attrib-' . $name; ?>
-									<?php echo JHtml::_('bootstrap.addPanel', 'myTab', $attribtabs, JText::_($fieldSet->label, true)); ?>
-								<?php endif; ?>
-
+					<?php  $fieldSets = $this->form->getFieldsets('attribs'); ?>
+						<?php foreach ($fieldSets as $name => $fieldSet) : ?>
+							<div class="tab-pane" id="attrib-<?php echo $name;?>">
 							<?php
 								// If the parameter says to show the article options or if the parameters have never been set, we will
 								// show the article options.
 
-								if ($params['show_article_options'] || (( $params['show_article_options'] == '' && !empty($editoroptions) ))) : ?>
-								<?php	// Go through all the fieldsets except the configuration and basic-limited, which are
+								if ($params['show_article_options'] || (( $params['show_article_options'] == '' && !empty($editoroptions) ))):
+									// Go through all the fieldsets except the configuration and basic-limited, which are
 									// handled separately below.
-								?>
 
-									<?php if ($name != 'editorConfig' && $name != 'basic-limited') : ?>
+									if ($name != 'editorConfig' && $name != 'basic-limited') : ?>
 										<?php if (isset($fieldSet->description) && trim($fieldSet->description)) : ?>
 											<p class="tip"><?php echo $this->escape(JText::_($fieldSet->description));?></p>
-										<?php endif; ?>
-										<?php foreach ($this->form->getFieldset($name) as $field) : ?>
+										<?php endif;
+										foreach ($this->form->getFieldset($name) as $field) : ?>
 											<div class="control-group">
 												<?php echo $field->label; ?>
 												<div class="controls">
 													<?php echo $field->input; ?>
 												</div>
 											</div>
-										<?php endforeach; ?>
-									<?php endif; ?>
-								<?php // If we are not showing the options we need to use the hidden fields so the values are not lost.
-								?>
-								<?php elseif ($name == 'basic-limited'):
+										<?php endforeach;
+									endif;
+								// If we are not showing the options we need to use the hidden fields so the values are not lost.
+								elseif ($name == 'basic-limited'):
 									foreach ($this->form->getFieldset('basic-limited') as $field) :
 										echo $field->input;
 									endforeach;
 								endif;
 							?>
-						<?php endforeach; ?>
-						<?php echo JHtml::_('bootstrap.endPanel'); ?>
-					<?php endif; ?>
-
-					<?php // We need to make a separate space for the configuration
+							</div>
+						<?php endforeach;
+						// We need to make a separate space for the configuration
 						// so that those fields always show to those wih permissions
-					?>
-					<?php if ($this->canDo->get('core.admin')):  ?>
-						<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'editor', JText::_('COM_CONTENT_SLIDER_EDITOR_CONFIG', true)); ?>
+
+						if ($this->canDo->get('core.admin')):  ?>
+						<div class="tab-pane" id="editor">
 							<?php foreach ($this->form->getFieldset('editorConfig') as $field) : ?>
 								<div class="control-group">
 									<?php echo $field->label; ?>
@@ -259,32 +272,34 @@ endif;
 									</div>
 								</div>
 							<?php endforeach; ?>
-						<?php echo JHtml::_('bootstrap.endPanel'); ?>
+						</div>
 					<?php endif ?>
 
-					<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'metadata', JText::_('JGLOBAL_FIELDSET_METADATA_OPTIONS', true)); ?>
+					<div class="tab-pane" id="metadata">
+						<fieldset>
 							<?php echo $this->loadTemplate('metadata'); ?>
-					<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
+						</fieldset>
+					</div>
 					<?php if ($assoc) : ?>
-						<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS', true)); ?>
+					<div class="tab-pane" id="associations">
+						<fieldset>
 							<?php echo $this->loadTemplate('associations'); ?>
-						<?php echo JHtml::_('bootstrap.endPanel'); ?>
+						</fieldset>
+					</div>
 					<?php endif; ?>
 
 					<?php if ($this->canDo->get('core.admin')) : ?>
-						<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'permissions', JText::_('COM_CONTENT_FIELDSET_RULES', true)); ?>
+						<div class="tab-pane" id="permissions">
 							<fieldset>
 								<?php echo $this->form->getInput('rules'); ?>
 							</fieldset>
-						<?php echo JHtml::_('bootstrap.endPanel'); ?>
+						</div>
 					<?php endif; ?>
-
-			<?php echo JHtml::_('bootstrap.endPane'); ?>
-
-			<input type="hidden" name="task" value="" />
-			<input type="hidden" name="return" value="<?php echo $input->getCmd('return');?>" />
-			<?php echo JHtml::_('form.token'); ?>
+				<!-- End Tabs -->
+			</div>
+				<input type="hidden" name="task" value="" />
+				<input type="hidden" name="return" value="<?php echo $input->getCmd('return');?>" />
+				<?php echo JHtml::_('form.token'); ?>
 		</div>
 		<!-- End Content -->
 		<!-- Begin Sidebar -->
@@ -323,15 +338,6 @@ endif;
 						<?php echo $this->form->getInput('language'); ?>
 					</div>
 				</div>
-				<div class="control-group">
-					<div class="control-label">
-						<?php echo $this->form->getLabel('tags'); ?>
-					</div>
-					<div class="controls">
-						<?php echo $this->form->getInput('tags'); ?>
-					</div>
-				</div>
-
 			</fieldset>
 		</div>
 		<!-- End Sidebar -->

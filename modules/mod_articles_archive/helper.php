@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  mod_articles_archive
  * @since       1.5
  */
-class ModArchiveHelper
+class modArchiveHelper
 {
 	/*
 	 * @since  1.5

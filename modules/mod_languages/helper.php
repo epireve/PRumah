@@ -17,7 +17,7 @@ JLoader::register('MenusHelper', JPATH_ADMINISTRATOR . '/components/com_menus/he
  * @package     Joomla.Site
  * @subpackage  mod_languages
  */
-abstract class ModLanguagesHelper
+abstract class modLanguagesHelper
 {
 	public static function getList(&$params)
 	{

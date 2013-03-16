@@ -56,9 +56,18 @@ $assoc = isset($app->item_associations) ? $app->item_associations : 0;
 
 <form action="<?php echo JRoute::_('index.php?option=com_menus&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate form-horizontal">
 	<fieldset>
-		<?php echo JHtml::_('bootstrap.startPane', 'myTab', array('active' => 'details')); ?>
-
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'details', JText::_('COM_MENUS_ITEM_DETAILS', true)); ?>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#details" data-toggle="tab"><?php echo JText::_('COM_MENUS_ITEM_DETAILS');?></a></li>
+			<li><a href="#options" data-toggle="tab"><?php echo JText::_('COM_MENUS_ADVANCED_FIELDSET_LABEL');?></a></li>
+			<?php if ($assoc) : ?>
+				<li><a href="#associations" data-toggle="tab"><?php echo JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS');?></a></li>
+			<?php endif; ?>
+			<?php if (!empty($this->modules)) : ?>
+				<li><a href="#modules" data-toggle="tab"><?php echo JText::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT');?></a></li>
+			<?php endif; ?>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane active" id="details">
 				<div class="row-fluid">
 					<div class="span6">
 						<div class="control-group">
@@ -189,6 +198,7 @@ $assoc = isset($app->item_associations) ? $app->item_associations : 0;
 								<?php echo $this->form->getInput('menuordering'); ?>
 							</div>
 						</div>
+
 					</div>
 					<div class="span6">
 						<div class="control-group">
@@ -251,25 +261,21 @@ $assoc = isset($app->item_associations) ? $app->item_associations : 0;
 						</div>
 					</div>
 				</div>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'options', JText::_('COM_MENUS_ADVANCED_FIELDSET_LABEL', true)); ?>
+			</div>
+			<div class="tab-pane" id="options">
 				<?php echo $this->loadTemplate('options'); ?>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
+			</div>
 			<?php if ($assoc) : ?>
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS', true)); ?>
+			<div class="tab-pane" id="associations">
 				<?php echo $this->loadTemplate('associations'); ?>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
+			</div>
 			<?php endif; ?>
-
 			<?php if (!empty($this->modules)) : ?>
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'modules', JText::_('COM_MENUS_ITEM_MODULE_ASSIGNMENT', true)); ?>
+				<div class="tab-pane" id="modules">
 					<?php echo $this->loadTemplate('modules'); ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
+				</div>
 			<?php endif; ?>
-
-		<?php echo JHtml::_('bootstrap.endPane'); ?>
+		</div>
 	</fieldset>
 
 	<input type="hidden" name="task" value="" />

@@ -23,8 +23,10 @@ $doc->addScript('templates/' .$this->template. '/js/template.js');
 // Add Stylesheets
 $doc->addStyleSheet('templates/' .$this->template. '/css/template.css');
 
-// Load optional RTL Bootstrap CSS
-JHtml::_('bootstrap.loadCss', false, $this->direction);
+// If Right-to-Left
+if ($this->direction == 'rtl') :
+	$doc->addStyleSheet('../media/jui/css/bootstrap-rtl.css');
+endif;
 
 // Load specific language related CSS
 $file = 'language/' . $lang->getTag() . '/' . $lang->getTag() . '.css';

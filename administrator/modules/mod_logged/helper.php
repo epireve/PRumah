@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  * @package     Joomla.Administrator
  * @subpackage  mod_logged
  */
-abstract class ModLoggedHelper
+abstract class modLoggedHelper
 {
 	/**
 	 * Get a list of logged users.

@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  System.log
  * @since       1.5
  */
-class PlgSystemLog extends JPlugin
+class plgSystemLog extends JPlugin
 {
 	public function onUserLoginFailure($response)
 	{

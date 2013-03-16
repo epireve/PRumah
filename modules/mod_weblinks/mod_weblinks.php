@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 // Include the weblinks functions only once
 require_once __DIR__ . '/helper.php';
 
-$list = ModWeblinksHelper::getList($params);
+$list = modWeblinksHelper::getList($params);
 
 if (!count($list))
 {

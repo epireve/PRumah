@@ -17,29 +17,32 @@ JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 	<div class="row-fluid">
 		<!-- Begin Content -->
 		<div class="span10">
-			<?php echo JHtml::_('bootstrap.startPane', 'myTab', array('active' => 'site')); ?>
-
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'site', JText::_('COM_ADMIN_SYSTEM_INFORMATION', true)); ?>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#site" data-toggle="tab"><?php echo JText::_('COM_ADMIN_SYSTEM_INFORMATION');?></a></li>
+				<li><a href="#phpsettings" data-toggle="tab"><?php echo JText::_('COM_ADMIN_PHP_SETTINGS');?></a></li>
+				<li><a href="#config" data-toggle="tab"><?php echo JText::_('COM_ADMIN_CONFIGURATION_FILE');?></a></li>
+				<li><a href="#directory" data-toggle="tab"><?php echo JText::_('COM_ADMIN_DIRECTORY_PERMISSIONS');?></a></li>
+				<li><a href="#phpinfo" data-toggle="tab"><?php echo JText::_('COM_ADMIN_PHP_INFORMATION');?></a></li>
+			</ul>
+			<div class="tab-content">
+				<!-- Begin Tabs -->
+				<div class="tab-pane active" id="site">
 					<?php echo $this->loadTemplate('system'); ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'phpsettings', JText::_('COM_ADMIN_PHP_SETTINGS', true)); ?>
+				</div>
+				<div class="tab-pane" id="phpsettings">
 					<?php echo $this->loadTemplate('phpsettings'); ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'config', JText::_('COM_ADMIN_CONFIGURATION_FILE', true)); ?>
+				</div>
+				<div class="tab-pane" id="config">
 					<?php echo $this->loadTemplate('config'); ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'directory', JText::_('COM_ADMIN_DIRECTORY_PERMISSIONS', true)); ?>
+				</div>
+				<div class="tab-pane" id="directory">
 					<?php echo $this->loadTemplate('directory'); ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'phpinfo', JText::_('COM_ADMIN_PHP_INFORMATION', true)); ?>
+				</div>
+				<div class="tab-pane" id="phpinfo">
 					<?php echo $this->loadTemplate('phpinfo'); ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-			<?php echo JHtml::_('bootstrap.endPane'); ?>
+				</div>
+				<!-- End Tabs -->
+			</div>
 		</div>
 		<!-- End Content -->
 	</div>

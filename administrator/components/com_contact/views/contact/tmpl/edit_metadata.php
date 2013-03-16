@@ -11,9 +11,9 @@ defined('_JEXEC') or die;
 
 $fieldSets = $this->form->getFieldsets('metadata');
 foreach ($fieldSets as $name => $fieldSet) :
-	$metadatatabs = 'metadata-' . $name;
-	echo JHtml::_('bootstrap.addPanel', 'myTab', $metadatatabs, JText::_($fieldSet->label, true));
-
+	?>
+	<div class="tab-pane" id="metadata-<?php echo $name;?>">
+	<?php
 	if (isset($fieldSet->description) && trim($fieldSet->description)) :
 		echo '<p class="alert alert-info">'.$this->escape(JText::_($fieldSet->description)).'</p>';
 	endif;
@@ -39,5 +39,5 @@ foreach ($fieldSets as $name => $fieldSet) :
 					<div class="controls"><?php echo $field->input; ?></div>
 				</div>
 			<?php endforeach; ?>
-	<?php echo JHtml::_('bootstrap.endPanel'); ?>
+	</div>
 <?php endforeach; ?>

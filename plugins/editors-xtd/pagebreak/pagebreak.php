@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Editors-xtd.pagebreak
  * @since       1.5
  */
-class PlgButtonPagebreak extends JPlugin
+class plgButtonPagebreak extends JPlugin
 {
 	/**
 	 * Constructor

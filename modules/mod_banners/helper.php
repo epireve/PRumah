@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  mod_banners
  * @since       1.5
  */
-class ModBannersHelper
+class modBannersHelper
 {
 	public static function &getList(&$params)
 	{

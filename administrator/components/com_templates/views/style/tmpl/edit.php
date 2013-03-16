@@ -28,9 +28,18 @@ $canDo = TemplatesHelper::getActions();
 
 <form action="<?php echo JRoute::_('index.php?option=com_templates&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="style-form" class="form-validate form-horizontal">
 	<fieldset>
-		<?php echo JHtml::_('bootstrap.startPane', 'myTab', array('active' => 'details')); ?>
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#details" data-toggle="tab"><?php echo JText::_('JDETAILS');?></a></li>
+			<li><a href="#options" data-toggle="tab"><?php echo JText::_('JOPTIONS');?></a></li>
+			<?php if ($user->authorise('core.edit', 'com_menu') && $this->item->client_id == 0):?>
+				<?php if ($canDo->get('core.edit.state')) : ?>
+						<li><a href="#assignment" data-toggle="tab"><?php echo JText::_('COM_TEMPLATES_MENUS_ASSIGNMENT');?></a></li>
+				<?php endif; ?>
+			<?php endif;?>
+		</ul>
 
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'details', JText::_('JDETAILS', true)); ?>
+		<div class="tab-content">
+			<div class="tab-pane active" id="details">
 				<div class="control-group">
 					<div class="control-label">
 						<?php echo $this->form->getLabel('title'); ?>
@@ -88,24 +97,20 @@ $canDo = TemplatesHelper::getActions();
 				<?php else : ?>
 					<div class="alert alert-error"><?php echo JText::_('COM_TEMPLATES_ERR_XML'); ?></div>
 				<?php endif; ?>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-			<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'options', JText::_('JOPTIONS', true)); ?>
+			</div>
+			<div class="tab-pane" id="options">
 				<?php //get the menu parameters that are automatically set but may be modified.
 					echo $this->loadTemplate('options'); ?>
-			<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
+			</div>
 			<?php if ($user->authorise('core.edit', 'com_menu') && $this->item->client_id == 0):?>
 				<?php if ($canDo->get('core.edit.state')) : ?>
-					<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'assignment', JText::_('COM_TEMPLATES_MENUS_ASSIGNMENT', true)); ?>
+					<div class="tab-pane" id="assignment">
 						<?php echo $this->loadTemplate('assignment'); ?>
-					<?php echo JHtml::_('bootstrap.endPanel'); ?>
+					</div>
 				<?php endif; ?>
 			<?php endif;?>
-
-		<?php echo JHtml::_('bootstrap.endPane'); ?>
+		</div>
 	</fieldset>
-
 	<input type="hidden" name="task" value="" />
 	<?php echo JHtml::_('form.token'); ?>
 </form>

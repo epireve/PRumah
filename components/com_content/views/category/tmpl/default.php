@@ -30,12 +30,6 @@ JHtml::_('behavior.caption');
 	</h2>
 	<?php endif; ?>
 
-	<?php if ($this->params->get('show_tags', 1) && !empty($this->category->tags->itemTags)) : ?>
-		<?php $this->category->tagLayout = new JLayoutFile('joomla.content.tags'); ?>
-		<?php echo $this->category->tagLayout->render($this->category->tags->itemTags); ?>
-	<?php endif; ?>
-
-
 	<?php if ($this->params->get('show_description', 1) || $this->params->def('show_description_image', 1)) : ?>
 	<div class="category-desc">
 		<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
@@ -54,11 +48,9 @@ JHtml::_('behavior.caption');
 
 	<?php if (!empty($this->children[$this->category->id])&& $this->maxLevel != 0) : ?>
 	<div class="cat-children">
-		<?php if ($this->params->get('show_category_heading_title_text', 1) == 1) : ?>
-			<h3>
-				<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
-			</h3>
-		<?php endif; ?>
+		<h3>
+			<?php echo JTEXT::_('JGLOBAL_SUBCATEGORIES'); ?>
+		</h3>
 
 		<?php echo $this->loadTemplate('children'); ?>
 	</div>

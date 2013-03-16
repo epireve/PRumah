@@ -352,30 +352,30 @@ $cim = $user->authorise('core.manage', 'com_checkin');
 
 	if ($su):
 		$menu->addChild(
-		new JMenuNode(JText::_('MOD_MENU_CONFIGURATION'), 'index.php?option=com_config', 'class:config')
+		new JMenuNode(JText::_('MOD_MENU_CONFIGURATION'), 'index.php?option=com_config')
 		);
 		$menu->addChild(
-		new JMenuNode(JText::_('MOD_MENU_SYSTEM_INFORMATION'), 'index.php?option=com_admin&view=sysinfo', 'class:info')
+		new JMenuNode(JText::_('MOD_MENU_SYSTEM_INFORMATION'), 'index.php?option=com_admin&view=sysinfo')
 	);
 	endif;
 	if  ($cam):
 		$menu->addChild(
-		new JMenuNode(JText::_('MOD_MENU_CLEAR_CACHE'), 'index.php?option=com_cache', 'class:clear')
+		new JMenuNode(JText::_('MOD_MENU_CLEAR_CACHE'), 'index.php?option=com_cache')
 		);
 		$menu->addChild(
-		new JMenuNode(JText::_('MOD_MENU_PURGE_EXPIRED_CACHE'), 'index.php?option=com_cache&view=purge', 'class:purge')
+		new JMenuNode(JText::_('MOD_MENU_PURGE_EXPIRED_CACHE'), 'index.php?option=com_cache&view=purge')
 		);
 	endif;
 	if  ($cim):
 		$menu->addChild(
-		new JMenuNode(JText::_('MOD_MENU_GLOBAL_CHECKIN'), 'index.php?option=com_checkin', 'class:checkin')
+		new JMenuNode(JText::_('MOD_MENU_GLOBAL_CHECKIN'), 'index.php?option=com_checkin')
 		);
 	endif;
 		$menu->addChild(
-		new JMenuNode(JText::_('MOD_MENU_USER_PROFILE'), 'index.php?option=com_admin&task=profile.edit&id='. $user->id, 'class:profile')
+		new JMenuNode(JText::_('MOD_MENU_USER_PROFILE'), 'index.php?option=com_admin&task=profile.edit&id='. $user->id)
 		);
 		$menu->addChild(
-		new JMenuNode(JText::_('MOD_MENU_LOGOUT'), 'index.php?option=com_login&task=logout&'. JSession::getFormToken() .'=1', 'class:logout')
+		new JMenuNode(JText::_('MOD_MENU_LOGOUT'), 'index.php?option=com_login&task=logout&'. JSession::getFormToken() .'=1')
 		);
 
 	$menu->getParent();

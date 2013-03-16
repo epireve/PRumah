@@ -37,7 +37,11 @@ $document = JFactory::getDocument();
 					<li>
 						<a class="choose_type" href="#" title="<?php echo JText::_($item->description); ?>"
 							onclick="javascript:setmenutype('<?php echo base64_encode(json_encode(array('id' => $this->recordId, 'title' => $item->title, 'request' => $item->request))); ?>')">
-							<?php echo JText::_($item->title);?> <small class="muted"><?php echo JText::_($item->description); ?></small>
+							<?php if ($document->direction != "rtl") : ?>
+								<?php echo JText::_($item->title);?> <small class="muted"><?php echo JText::_($item->description); ?></small>
+							<?php else : ?>
+								<small class="muted"><?php echo JText::_($item->description); ?></small> <?php echo JText::_($item->title);?>
+							<?php endif?>
 						</a>
 					</li>
 				<?php endforeach; ?>
@@ -48,22 +52,35 @@ $document = JFactory::getDocument();
 		<ul class="nav nav-tabs nav-stacked">
 			<li><a class="choose_type" href="#" title="<?php echo JText::_('COM_MENUS_TYPE_EXTERNAL_URL_DESC'); ?>"
 					onclick="javascript:setmenutype('<?php echo base64_encode(json_encode(array('id' => $this->recordId, 'title' => 'url'))); ?>')">
-					<?php echo JText::_('COM_MENUS_TYPE_EXTERNAL_URL'); ?> <small class="muted"><?php echo JText::_('COM_MENUS_TYPE_EXTERNAL_URL_DESC'); ?></small>
+					<?php if ($document->direction != "rtl") : ?>
+						<?php echo JText::_('COM_MENUS_TYPE_EXTERNAL_URL'); ?> <small class="muted"><?php echo JText::_('COM_MENUS_TYPE_EXTERNAL_URL_DESC'); ?></small>
+					<?php else : ?>
+						<small class="muted"><?php echo JText::_('COM_MENUS_TYPE_EXTERNAL_URL_DESC'); ?> </small> <?php echo JText::_('COM_MENUS_TYPE_EXTERNAL_URL'); ?>
+					<?php endif?>
 				</a>
 			</li>
 			<li><a class="choose_type" href="#" title="<?php echo JText::_('COM_MENUS_TYPE_ALIAS_DESC'); ?>"
 					onclick="javascript:setmenutype('<?php echo base64_encode(json_encode(array('id' => $this->recordId, 'title' => 'alias'))); ?>')">
-					<?php echo JText::_('COM_MENUS_TYPE_ALIAS'); ?> <small class="muted"><?php echo JText::_('COM_MENUS_TYPE_ALIAS_DESC'); ?></small>
+					<?php if ($document->direction != "rtl") : ?>
+						<?php echo JText::_('COM_MENUS_TYPE_ALIAS'); ?> <small class="muted"><?php echo JText::_('COM_MENUS_TYPE_ALIAS_DESC'); ?></small>
+					<?php else : ?>
+						<small class="muted"><?php echo JText::_('COM_MENUS_TYPE_ALIAS_DESC'); ?></small> <?php echo JText::_('COM_MENUS_TYPE_ALIAS'); ?>
+					<?php endif?>
 				</a>
 			</li>
 			<li><a class="choose_type" href="#" title="<?php echo JText::_('COM_MENUS_TYPE_SEPARATOR_DESC'); ?>"
 					onclick="javascript:setmenutype('<?php echo base64_encode(json_encode(array('id' => $this->recordId, 'title' => 'separator'))); ?>')">
-					<?php echo JText::_('COM_MENUS_TYPE_SEPARATOR'); ?> <small class="muted"><?php echo JText::_('COM_MENUS_TYPE_SEPARATOR_DESC'); ?></small>
+					<?php if ($document->direction != "rtl") : ?>
+						<?php echo JText::_('COM_MENUS_TYPE_SEPARATOR'); ?> <small class="muted"><?php echo JText::_('COM_MENUS_TYPE_SEPARATOR_DESC'); ?></small>
+					<?php else : ?>
+						<small class="muted"><?php echo JText::_('COM_MENUS_TYPE_SEPARATOR_DESC'); ?></small> <?php echo JText::_('COM_MENUS_TYPE_SEPARATOR'); ?>
+					<?php endif?>
 				</a>
 			</li>
 			<li><a class="choose_type" href="#" title="<?php echo JText::_('COM_MENUS_TYPE_HEADING_DESC'); ?>"
 					onclick="javascript:setmenutype('<?php echo base64_encode(json_encode(array('id' => $this->recordId, 'title' => 'heading'))); ?>')">
 					<?php echo JText::_('COM_MENUS_TYPE_HEADING'); ?> <small class="muted"><?php echo JText::_('COM_MENUS_TYPE_HEADING_DESC'); ?></small>
+				</a>
 			</li>
 		</ul>
 	<?php echo JHtml::_('bootstrap.endSlide'); ?>

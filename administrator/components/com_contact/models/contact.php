@@ -94,16 +94,6 @@ class ContactModelContact extends JModelAdmin
 			$done = true;
 		}
 
-		if (!empty($commands['tag']))
-		{
-			if (!$this->batchTag($commands['tag'], $pks, $contexts))
-			{
-				return false;
-			}
-
-			$done = true;
-		}
-
 		if (strlen($commands['user_id']) > 0)
 		{
 			if (!$this->batchUser($commands['user_id'], $pks, $contexts))
@@ -292,7 +282,7 @@ class ContactModelContact extends JModelAdmin
 	/**
 	 * Method to test whether a record can be deleted.
 	 *
-	 * @param   object  $record  A record object.
+	 * @param   object	$record	A record object.
 	 *
 	 * @return  boolean  True if allowed to delete the record. Defaults to the permission set in the component.
 	 * @since   1.6
@@ -398,11 +388,10 @@ class ContactModelContact extends JModelAdmin
 	{
 		if ($item = parent::getItem($pk))
 		{
-			// Convert the metadata field to an array.
+			// Convert the params field to an array.
 			$registry = new JRegistry;
 			$registry->loadString($item->metadata);
 			$item->metadata = $registry->toArray();
-
 		}
 
 		// Load associated contact items
@@ -415,7 +404,7 @@ class ContactModelContact extends JModelAdmin
 
 			if ($item->id != null)
 			{
-				$associations = JLanguageAssociations::getAssociations('com_contact', '#__contact_details', 'com_contact.item', $item->id);
+				$associations = ContactHelper::getAssociations($item->id);
 
 				foreach ($associations as $tag => $association)
 				{
@@ -424,9 +413,6 @@ class ContactModelContact extends JModelAdmin
 
 			}
 		}
-
-		$item->tags = new JTags;
-		$item->tags->getTagIds($item->id, 'com_contact.contact');
 
 		return $item;
 	}

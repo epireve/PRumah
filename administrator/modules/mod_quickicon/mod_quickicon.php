@@ -11,6 +11,6 @@ defined('_JEXEC') or die;
 
 require_once __DIR__ . '/helper.php';
 
-$buttons = ModQuickIconHelper::getButtons($params);
+$buttons = modQuickIconHelper::getButtons($params);
 
 require JModuleHelper::getLayoutPath('mod_quickicon', $params->get('layout', 'default'));

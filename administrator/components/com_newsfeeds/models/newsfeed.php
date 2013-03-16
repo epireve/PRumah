@@ -383,7 +383,10 @@ class NewsfeedsModelNewsfeed extends JModelAdmin
 			$registry = new JRegistry;
 			$registry->loadString($item->metadata);
 			$item->metadata = $registry->toArray();
+		}
 
+		if ($item = parent::getItem($pk))
+		{
 			// Convert the images field to an array.
 			$registry = new JRegistry;
 			$registry->loadString($item->images);
@@ -400,7 +403,7 @@ class NewsfeedsModelNewsfeed extends JModelAdmin
 
 			if ($item->id != null)
 			{
-				$associations = JLanguageAssociations::getAssociations('com_newsfeeds', '#__newsfeeds', 'com_newsfeeds.item', $item->id);
+				$associations = NewsfeedsHelper::getAssociations($item->id);
 
 				foreach ($associations as $tag => $association)
 				{
@@ -408,11 +411,6 @@ class NewsfeedsModelNewsfeed extends JModelAdmin
 				}
 
 			}
-		}
-		if (!empty($item->id))
-		{
-			$item->tags = new JTags;
-			$item->tags->getTagIds($item->id, 'com_newsfeeds.newsfeed');
 		}
 
 		return $item;

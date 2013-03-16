@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Quickicon.Extensionupdate
  * @since       2.5
  */
-class PlgQuickiconExtensionupdate extends JPlugin
+class plgQuickiconExtensionupdate extends JPlugin
 {
 	/**
 	 * Constructor
@@ -60,12 +60,11 @@ class PlgQuickiconExtensionupdate extends JPlugin
 			JText::_('PLG_QUICKICON_EXTENSIONUPDATE_ERROR', true)."\"};\n";
 		$document = JFactory::getDocument();
 		$document->addScriptDeclaration($script);
-		JHtml::_('script', 'plg_quickicon_extensionupdate/extensionupdatecheck.js', false, true);
+		JHtml::script('plg_quickicon_extensionupdate/extensionupdatecheck.js', false, true);
 
 		return array(array(
 			'link' => 'index.php?option=com_installer&view=update',
 			'image' => 'asterisk',
-			'icon' => 'header/icon-48-extension.png',
 			'text' => JText::_('PLG_QUICKICON_EXTENSIONUPDATE_CHECKING'),
 			'id' => 'plg_quickicon_extensionupdate'
 		));

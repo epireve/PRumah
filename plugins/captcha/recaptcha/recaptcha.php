@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
  * @subpackage  Captcha
  * @since       2.5
  */
-class PlgCaptchaRecaptcha extends JPlugin
+class plgCaptchaRecaptcha extends JPlugin
 {
 	const RECAPTCHA_API_SERVER = "http://api.recaptcha.net";
 	const RECAPTCHA_API_SECURE_SERVER = "https://www.google.com/recaptcha/api";

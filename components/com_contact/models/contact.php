@@ -95,10 +95,8 @@ class ContactModelContact extends JModelForm
 	}
 
 	/**
-	 * Gets a contact
-	 *
-	 * @param integer $pk  Id for the contact
-	 *
+	 * Gets a list of contacts
+	 * @param array
 	 * @return mixed Object or null
 	 */
 	public function &getItem($pk = null)
@@ -185,9 +183,6 @@ class ContactModelContact extends JModelForm
 				$registry = new JRegistry;
 				$registry->loadString($data->metadata);
 				$data->metadata = $registry;
-
-				$data->tags = new JTags;
-				$data->tags->getItemTags('com_contact.contact', $data->id);
 
 				// Compute access permissions.
 				if ($access = $this->getState('filter.access')) {

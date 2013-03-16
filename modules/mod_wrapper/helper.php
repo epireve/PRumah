@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  mod_wrapper
  * @since       1.5
  */
-class ModWrapperHelper
+class modWrapperHelper
 {
 	public static function getParams(&$params)
 	{

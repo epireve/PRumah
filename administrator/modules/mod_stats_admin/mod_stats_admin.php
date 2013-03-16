@@ -15,7 +15,7 @@ require_once __DIR__ . '/helper.php';
 $serverinfo = $params->get('serverinfo');
 $siteinfo	= $params->get('siteinfo');
 
-$list = ModStatsHelper::getStats($params);
+$list = modStatsHelper::getStats($params);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
 require JModuleHelper::getLayoutPath('mod_stats_admin', $params->get('layout', 'default'));

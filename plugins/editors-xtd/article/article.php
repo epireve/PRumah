@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Editors-xtd.article
  * @since       1.5
  */
-class PlgButtonArticle extends JPlugin
+class plgButtonArticle extends JPlugin
 {
 	/**
 	 * Constructor

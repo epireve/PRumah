@@ -17,7 +17,7 @@ defined('_JEXEC') or die;
  * @subpackage  Content.loadmodule
  * @since       1.5
  */
-class PlgContentLoadmodule extends JPlugin
+class plgContentLoadmodule extends JPlugin
 {
 	protected static $modules = array();
 

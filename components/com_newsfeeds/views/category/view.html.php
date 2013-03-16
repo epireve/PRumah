@@ -115,9 +115,6 @@ class NewsfeedsViewCategory extends JViewLegacy
 			$this->setLayout($active->query['layout']);
 		}
 
-		$this->category->tags = new JTags;
-		$this->category->tags->getItemTags('com_newsfeeds.category', $this->category->id);
-
 		$this->_prepareDocument();
 
 		parent::display($tpl);

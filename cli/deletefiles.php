@@ -61,10 +61,10 @@ class DeletefilesCli extends JApplicationCli
 		jimport('joomla.filesystem.folder');
 
 		// We need the update script
-		JLoader::register('JoomlaInstallerScript', JPATH_ADMINISTRATOR . '/components/com_admin/script.php');
+		JLoader::register('joomlaInstallerScript', JPATH_ADMINISTRATOR . '/components/com_admin/script.php');
 
 		// Instantiate the class
-		$class = new JoomlaInstallerScript;
+		$class = new joomlaInstallerScript;
 
 		// Run the delete method
 		$class->deleteUnexistingFiles();

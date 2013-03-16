@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  mod_feed
  * @since       1.5
  */
-class ModFeedHelper
+class modFeedHelper
 {
 	static function getFeed($params)
 	{

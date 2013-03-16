@@ -16,17 +16,16 @@ defined('_JEXEC') or die;
  * @subpackage  Content.emailcloak
  * @since       1.5
  */
-class PlgContentEmailcloak extends JPlugin
+class plgContentEmailcloak extends JPlugin
 {
 	/**
 	 * Plugin that cloaks all emails in content from spambots via Javascript.
 	 *
-	 * @param   string   $context  The context of the content being passed to the plugin.
-	 * @param   mixed    &$row     An object with a "text" property or the string to be cloaked.
-	 * @param   array    &$params  Additional parameters. See {@see PlgContentEmailcloak()}.
-	 * @param   integer  $page     Optional page number. Unused. Defaults to zero.
-	 *
-	 * @return  boolean	True on success.
+	 * @param   string	The context of the content being passed to the plugin.
+	 * @param   mixed	An object with a "text" property or the string to be cloaked.
+	 * @param   array     Additional parameters. See {@see plgEmailCloak()}.
+	 * @param   integer  Optional page number. Unused. Defaults to zero.
+	 * @return  boolean  True on success.
 	 */
 	public function onContentPrepare($context, &$row, &$params, $page = 0)
 	{
@@ -40,7 +39,6 @@ class PlgContentEmailcloak extends JPlugin
 		{
 			return $this->_cloak($row->text, $params);
 		}
-
 		return $this->_cloak($row, $params);
 	}
 
@@ -202,7 +200,7 @@ class PlgContentEmailcloak extends JPlugin
 			$text = substr_replace($text, $replacement, $regs[0][1], strlen($regs[0][0]));
 		}
 
-		/*
+	/*
 		 * Search for derivatives of link code <a href="mailto:email@amail.com">
 		 * <img anything></a>
 		 */

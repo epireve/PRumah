@@ -269,7 +269,6 @@ class JTableContent extends JTable
 			$this->setError(JText::_('JLIB_DATABASE_ERROR_ARTICLE_UNIQUE_ALIAS'));
 			return false;
 		}
-
 		return parent::store($updateNulls);
 	}
 

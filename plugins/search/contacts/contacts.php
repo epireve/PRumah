@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Search.contacts
  * @since       1.6
  */
-class PlgSearchContacts extends JPlugin
+class plgSearchContacts extends JPlugin
 {
 	/**
 	 * Constructor

@@ -53,13 +53,14 @@ class LanguagesViewOverride extends JViewLegacy
 	 */
 	public function display($tpl = null)
 	{
-		JHtml::_('stylesheet', 'overrider/overrider.css', array(), true);
+		$doc = JFactory::getDocument();
+		$doc->addStyleSheet(JURI::root().'media/overrider/css/overrider.css');
 		JHtml::_('behavior.framework');
-		JHtml::_('script', 'overrider/overrider.js', false, true);
+		$doc->addScript(JURI::root().'media/overrider/js/overrider.js');
 
-		$this->form  = $this->get('Form');
-		$this->item  = $this->get('Item');
-		$this->state = $this->get('State');
+		$this->form		= $this->get('Form');
+		$this->item		= $this->get('Item');
+		$this->state	= $this->get('State');
 
 		// Check for errors
 		if (count($errors = $this->get('Errors')))

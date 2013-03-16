@@ -38,9 +38,22 @@ JHtml::_('formbehavior.chosen', 'select');
 	<div class="row-fluid">
 	<!-- Begin Content -->
 		<div class="span10 form-horizontal">
-			<?php echo JHtml::_('bootstrap.startPane', 'myTab', array('active' => 'general')); ?>
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#general" data-toggle="tab"><?php echo JText::_('COM_CATEGORIES_FIELDSET_DETAILS');?></a></li>
+				<li><a href="#publishing" data-toggle="tab"><?php echo JText::_('COM_CATEGORIES_FIELDSET_PUBLISHING');?></a></li>
+				<li><a href="#options" data-toggle="tab"><?php echo JText::_('CATEGORIES_FIELDSET_OPTIONS');?></a></li>
+				<li><a href="#metadata" data-toggle="tab"><?php echo JText::_('JGLOBAL_FIELDSET_METADATA_OPTIONS');?></a></li>
+				<?php if ($this->assoc) : ?>
+					<li><a href="#associations" data-toggle="tab"><?php echo JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS');?></a></li>
+				<?php endif; ?>
+				<?php if ($this->canDo->get('core.admin')) : ?>
+					<li><a href="#permissions" data-toggle="tab"><?php echo JText::_('COM_CATEGORIES_FIELDSET_RULES');?></a></li>
+				<?php endif; ?>
+			</ul>
 
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'general', JText::_('COM_CATEGORIES_FIELDSET_DETAILS', true)); ?>
+			<div class="tab-content">
+				<!-- Begin Tabs -->
+				<div class="tab-pane active" id="general">
 					<div class="control-group">
 						<div class="control-label">
 							<?php echo $this->form->getLabel('title'); ?>
@@ -73,9 +86,10 @@ JHtml::_('formbehavior.chosen', 'select');
 							<?php echo $this->form->getInput('extension'); ?>
 						</div>
 					</div>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
+				</div>
+				<!-- End tab general -->
 
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'publishing', JText::_('COM_CATEGORIES_FIELDSET_PUBLISHING', true)); ?>
+				<div class="tab-pane" id="publishing">
 					<div class="control-group">
 						<div class="control-label">
 							<?php echo $this->form->getLabel('id'); ?>
@@ -128,40 +142,35 @@ JHtml::_('formbehavior.chosen', 'select');
 							</div>
 						</div>
 					<?php endif; ?>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'options', JText::_('CATEGORIES_FIELDSET_OPTIONS', true)); ?>
+				</div>
+				<div class="tab-pane" id="options">
 					<fieldset>
 						<?php echo $this->loadTemplate('options'); ?>
 					</fieldset>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
-				<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'metadata', JText::_('JGLOBAL_FIELDSET_METADATA_OPTIONS', true)); ?>
+				</div>
+				<div class="tab-pane" id="metadata">
 					<fieldset>
 						<?php echo $this->loadTemplate('metadata'); ?>
 					</fieldset>
-				<?php echo JHtml::_('bootstrap.endPanel'); ?>
-
+				</div>
 				<?php if ($this->assoc) : ?>
-					<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'associations', JText::_('JGLOBAL_FIELDSET_ASSOCIATIONS', true)); ?>
+					<div class="tab-pane" id="associations">
 						<fieldset>
 							<?php echo $this->loadTemplate('associations'); ?>
 						</fieldset>
-					<?php echo JHtml::_('bootstrap.endPanel'); ?>
+					</div>
 				<?php endif; ?>
-
 				<?php if ($this->canDo->get('core.admin')) : ?>
-					<?php echo JHtml::_('bootstrap.addPanel', 'myTab', 'rules', JText::_('COM_CATEGORIES_FIELDSET_RULES', true)); ?>
+					<div class="tab-pane" id="permissions">
 						<fieldset>
 							<?php echo $this->form->getInput('rules'); ?>
 						</fieldset>
-					<?php echo JHtml::_('bootstrap.endPanel'); ?>
+					</div>
 				<?php endif; ?>
-
-			<?php echo JHtml::_('bootstrap.endPane'); ?>
-
-			<input type="hidden" name="task" value="" />
-			<?php echo JHtml::_('form.token'); ?>
+				<!-- End Tabs -->
+			</div>
+				<input type="hidden" name="task" value="" />
+				<?php echo JHtml::_('form.token'); ?>
 		</div>
 		<!-- End Content -->
 		<!-- Begin Sidebar -->
@@ -196,14 +205,6 @@ JHtml::_('formbehavior.chosen', 'select');
 					<?php echo $this->form->getLabel('language'); ?>
 					<div class="controls">
 						<?php echo $this->form->getInput('language'); ?>
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="control-label">
-						<?php echo $this->form->getLabel('tags'); ?>
-					</div>
-					<div class="controls">
-						<?php echo $this->form->getInput('tags'); ?>
 					</div>
 				</div>
 			</fieldset>

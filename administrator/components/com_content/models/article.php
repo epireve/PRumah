@@ -287,12 +287,6 @@ class ContentModelArticle extends JModelAdmin
 			$item->urls = $registry->toArray();
 
 			$item->articletext = trim($item->fulltext) != '' ? $item->introtext . "<hr id=\"system-readmore\" />" . $item->fulltext : $item->introtext;
-
-			if (!empty($item->id))
-			{
-				$item->tags = new JTags;
-				$item->tags->getTagIds($item->id, 'com_content.article');
-			}
 		}
 
 		// Load associated content items
@@ -305,7 +299,7 @@ class ContentModelArticle extends JModelAdmin
 
 			if ($item->id != null)
 			{
-				$associations = JLanguageAssociations::getAssociations('com_content', '#__content', 'com_content.item', $item->id);
+				$associations = ContentHelper::getAssociations($item->id);
 
 				foreach ($associations as $tag => $association)
 				{
@@ -367,7 +361,7 @@ class ContentModelArticle extends JModelAdmin
 		// Check for existing article.
 		// Modify the form based on Edit State access controls.
 		if ($id != 0 && (!$user->authorise('core.edit.state', 'com_content.article.'.(int) $id))
-			|| ($id == 0 && !$user->authorise('core.edit.state', 'com_content'))
+		|| ($id == 0 && !$user->authorise('core.edit.state', 'com_content'))
 		)
 		{
 			// Disable fields for display.

@@ -2,7 +2,7 @@
 <extension
 	type="module"
 	version="3.0"
-	client="administrator"
+	client="admin"
 	method="upgrade">
 	<name>mod_stats_admin</name>
 	<author>Joomla! Project</author>

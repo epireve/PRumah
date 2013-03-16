@@ -274,9 +274,6 @@ class UsersModelProfile extends JModelForm
 			return false;
 		}
 
-		$user->tags = new JTags;
-		$user->tags->getTagIds($user->id, 'com_users.user');
-
 		return $user->id;
 	}
 }

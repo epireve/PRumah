@@ -16,7 +16,7 @@ defined('_JEXEC') or die;
  * @subpackage  Authentication.ldap
  * @since       1.5
  */
-class PlgAuthenticationLdap extends JPlugin
+class plgAuthenticationLdap extends JPlugin
 {
 	/**
 	 * This method should handle any authentication and report back to the subject

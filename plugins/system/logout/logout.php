@@ -16,7 +16,7 @@ defined('JPATH_BASE') or die;
  * @subpackage  System.logout
  * @since       1-6
  */
-class PlgSystemLogout extends JPlugin
+class plgSystemLogout extends JPlugin
 {
 	/**
 	 * Object Constructor.
@@ -33,7 +33,7 @@ class PlgSystemLogout extends JPlugin
 		$this->loadLanguage();
 
 		$input = JFactory::getApplication()->input;
-		$hash  = JApplication::getHash('PlgSystemLogout');
+		$hash  = JApplication::getHash('plgSystemLogout');
 		if (JFactory::getApplication()->isSite() && $input->cookie->getString($hash))
 		{
 			// Destroy the cookie
@@ -43,7 +43,7 @@ class PlgSystemLogout extends JPlugin
 			setcookie($hash, false, time() - 86400, $cookie_path, $cookie_domain);
 
 			// Set the error handler for E_ALL to be the class handleError method.
-			JError::setErrorHandling(E_ALL, 'callback', array('PlgSystemLogout', 'handleError'));
+			JError::setErrorHandling(E_ALL, 'callback', array('plgSystemLogout', 'handleError'));
 		}
 	}
 
@@ -61,7 +61,7 @@ class PlgSystemLogout extends JPlugin
 		if (JFactory::getApplication()->isSite())
 		{
 			// Create the cookie
-			$hash = JApplication::getHash('PlgSystemLogout');
+			$hash = JApplication::getHash('plgSystemLogout');
 			$conf = JFactory::getConfig();
 			$cookie_domain 	= $conf->get('config.cookie_domain', '');
 			$cookie_path 	= $conf->get('config.cookie_path', '/');
